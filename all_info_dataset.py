@@ -189,20 +189,6 @@ def get_info_dataset(data, q):
         if (len(edges_p) > 30000) and (len(edges_n) > 30000):
             break
 
-    # all_possible_edges = []
-    #
-    # for i in range(1, nodesNumber + 1):
-    #     for j in range(i, nodesNumber + 1):
-    #         all_possible_edges.append((i, j))
-
-    # for edge in all_possible_edges:
-    #     if (edge not in edges_r):
-    #         edges_n.append(edge)
-    #         number0 += 1
-    #     elif (min(edges_r[edge]) > s):
-    #         edges_p.append(edge)
-    #         number1 += 1
-
     edges_p_copy = edges_p.copy()
     edges_n_copy = edges_n.copy()
 
@@ -224,31 +210,7 @@ def get_info_dataset(data, q):
     number1 = len(edges_p)
     number0 = len(edges_n)
 
-    #Вариант через Флойда-Воршалла
-    # d = floyd_warshall(adjacency_list_until_s)
-    #
-    # seen_edges = []
-    # for i in range(0, len(d)):
-    #     for j in range(i, len(d)):
-    #         if ((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])) in edges_p):
-    #             seen_edges.append((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])))
-    #             if (d[i][j][0] != 2):
-    #                 edges_p.remove((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])))
-    #                 number1 -= 1
-    #
-    # edges_p = [edge for edge in edges_p if edge in seen_edges]
-    #
-    # seen_edges = []
-    #
-    # for i in range(0, len(d)):
-    #     for j in range(i, len(d)):
-    #         if ((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])) in edges_n):
-    #             seen_edges.append((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])))
-    #             if (d[i][j][0] != 2):
-    #                 edges_n.remove((min(d[i][j][1], d[i][j][2]), max(d[i][j][1], d[i][j][2])))
-    #                 number0 -= 1
-    #
-    # edges_n = [edge for edge in edges_n if edge in seen_edges]
+
 
     #Ограничения на количество предсказываемых ребер
     if (number1 >= 10000):
